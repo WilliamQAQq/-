@@ -1,0 +1,31 @@
+body {
+    margin: 0;
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* 确保 body 占据整个视窗高度 */
+}
+
+#viewer {
+    flex-grow: 1; /* 让阅读器占据所有可用空间 */
+    margin: 20px;
+    border: 1px solid #ccc;
+    background-color: #f7f7f7;
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #fff;
+    border-top: 1px solid #eee;
+}
+
+.controls button {
+    padding: 10px 20px;
+    cursor: pointer;
+    border: 1px solid #007bff;
+    background-color: #007bff;
+    color: white;
+    border-radius: 4px;
+}
