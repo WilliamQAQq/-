@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的私人在线书架</title>
+    <script src="https://cdn.jsdelivr.net/npm/epubjs/dist/epub.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="viewer"></div>
+
+    <div class="controls">
+        <button id="prev" onclick="prevPage()">上一页</button>
+        <button id="next" onclick="nextPage()">下一页</button>
+    </div>
+
+    <script>
+        // 步骤 1: 定义 EPUB 文件路径
+        // **请确保这里的路径与您的 EPUB 文件在 books 文件夹中的实际路径一致**
+        const bookPath = './books/mybook.epub';
+        
+        // 步骤 2: 创建 Book 实例
+        const book = ePub(bookPath);
+        
+        // 步骤 3: 渲染到 HTML 容器
+        const rendition = book.renderTo("viewer", {
+            width: "100%",
+            height: "100%",
+            method: "default"
+        });
+        
+        // 步骤 4: 显示内容
+        rendition.display();
+
+        // 步骤 5: 绑定导航函数
+        function prevPage() {
+            rendition.prev();
+        }
+
+        function nextPage() {
+            rendition.next();
+        }
+
+        // 可选：添加键盘导航，提升阅读体验
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'ArrowLeft') {
+                prevPage();
+            } else if (event.key === 'ArrowRight') {
+                nextPage();
+            }
+        });
+
+    </script>
+</body>
+</html>
